@@ -1,0 +1,156 @@
+{
+  "nav": {
+    "features": "Features",
+    "workflow": "Workflow",
+    "gallery": "Gallery",
+    "faq": "FAQ",
+    "applyNow": "Apply Now"
+  },
+  "hero": {
+    "badge": "AI-Powered Creative Tool",
+    "title": "Transform Your Creative Workflow",
+    "subtitle": "ABrush revolutionizes digital art creation with intelligent AI assistance, seamless Photoshop integration, and powerful automation tools.",
+    "cta": "Get Early Access",
+    "watchDemo": "Watch Demo"
+  },
+  "logoWall": {
+    "title": "Trusted by Creative Professionals"
+  },
+  "features": {
+    "title": "Powerful Features",
+    "subtitle": "Everything you need to accelerate your creative process",
+    "aiAssisted": {
+      "title": "AI-Assisted Creation",
+      "description": "Leverage advanced AI to generate, enhance, and refine your artwork with intelligent suggestions."
+    },
+    "seamlessIntegration": {
+      "title": "Seamless Integration",
+      "description": "Works perfectly with Adobe Photoshop, integrating directly into your existing workflow."
+    },
+    "smartAutomation": {
+      "title": "Smart Automation",
+      "description": "Automate repetitive tasks and focus on what matters - your creative vision."
+    },
+    "realTimePreview": {
+      "title": "Real-time Preview",
+      "description": "See changes instantly with our lightning-fast preview system."
+    },
+    "customBrushes": {
+      "title": "Custom Brushes",
+      "description": "Create and save unlimited custom brushes with AI-enhanced parameters."
+    },
+    "cloudSync": {
+      "title": "Cloud Sync",
+      "description": "Access your work anywhere with automatic cloud synchronization."
+    }
+  },
+  "workflow": {
+    "title": "Streamlined Workflow",
+    "subtitle": "From concept to completion in three simple steps",
+    "step1": {
+      "title": "Import & Setup",
+      "description": "Import your project into Photoshop and activate ABrush with a single click."
+    },
+    "step2": {
+      "title": "Create & Enhance",
+      "description": "Use AI-powered tools to create stunning artwork faster than ever before."
+    },
+    "step3": {
+      "title": "Export & Share",
+      "description": "Export in any format and share your masterpiece with the world."
+    }
+  },
+  "gallery": {
+    "title": "Created with ABrush",
+    "subtitle": "See what creative professionals are making"
+  },
+  "testimonials": {
+    "title": "What Creators Say",
+    "subtitle": "Join thousands of satisfied artists",
+    "testimonial1": {
+      "text": "ABrush has completely transformed how I work. What used to take hours now takes minutes.",
+      "author": "Sarah Chen",
+      "role": "Digital Artist"
+    },
+    "testimonial2": {
+      "text": "The AI assistance is incredible. It's like having a creative partner who understands exactly what I need.",
+      "author": "Marcus Rodriguez",
+      "role": "Concept Artist"
+    },
+    "testimonial3": {
+      "text": "As a studio lead, ABrush has increased our team's productivity by 300%. It's a game-changer.",
+      "author": "Emily Watson",
+      "role": "Studio Director"
+    }
+  },
+  "faq": {
+    "title": "Frequently Asked Questions",
+    "q1": {
+      "question": "What is ABrush?",
+      "answer": "ABrush is an AI-powered creative tool that integrates seamlessly with Adobe Photoshop to enhance your digital art workflow."
+    },
+    "q2": {
+      "question": "Do I need Photoshop to use ABrush?",
+      "answer": "Yes, ABrush is designed as a Photoshop plugin and requires Adobe Photoshop CC 2020 or later."
+    },
+    "q3": {
+      "question": "How does the evaluation copy work?",
+      "answer": "Apply through our form and we'll review your application. Selected applicants receive a free 30-day evaluation license."
+    },
+    "q4": {
+      "question": "What are the system requirements?",
+      "answer": "Windows 10/11 or macOS 10.15+, 8GB RAM minimum (16GB recommended), and Adobe Photoshop CC 2020 or later."
+    },
+    "q5": {
+      "question": "Is there a learning curve?",
+      "answer": "ABrush is designed to be intuitive. Most users are productive within minutes, and we provide comprehensive tutorials."
+    },
+    "q6": {
+      "question": "Can I use ABrush commercially?",
+      "answer": "Yes, our commercial license allows you to use ABrush for client work and commercial projects."
+    }
+  },
+  "registration": {
+    "title": "Apply for Evaluation Copy",
+    "subtitle": "Get early access to ABrush. Fill out the form below and we'll review your application.",
+    "form": {
+      "name": "Full Name",
+      "email": "Email Address",
+      "role": "Evaluator Role",
+      "rolePlaceholder": "Select your role",
+      "roleIndividual": "Individual Creator",
+      "roleStudioArtist": "Studio Artist",
+      "roleStudioExecutive": "Studio Executive",
+      "captchaError": "Please complete the captcha verification",
+      "fillAllFields": "Please fill in all fields",
+      "submit": "Submit Application",
+      "submitting": "Submitting...",
+      "terms": "By submitting this form, you agree to our terms of service and privacy policy."
+    },
+    "success": {
+      "title": "Application Submitted!",
+      "message": "Thank you for your interest. We'll review your application and get back to you soon.",
+      "button": "Submit Another Application"
+    },
+    "error": "Something went wrong. Please try again."
+  },
+  "footer": {
+    "tagline": "Empowering creators with AI-driven tools",
+    "product": "Product",
+    "features": "Features",
+    "workflow": "Workflow",
+    "gallery": "Gallery",
+    "company": "Company",
+    "about": "About",
+    "blog": "Blog",
+    "careers": "Careers",
+    "support": "Support",
+    "documentation": "Documentation",
+    "contact": "Contact",
+    "faq": "FAQ",
+    "legal": "Legal",
+    "privacy": "Privacy Policy",
+    "terms": "Terms of Service",
+    "rights": "All rights reserved."
+  }
+}

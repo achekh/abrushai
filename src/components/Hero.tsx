@@ -1,50 +1,39 @@
 import React from 'react'
-import { PlayCircle, Rocket, ArrowRight } from 'lucide-react'
+import { useTranslation } from 'react-i18next'
+import { Sparkles, Play } from 'lucide-react'
 
 export default function Hero() {
-  return (
-    <section className="relative soft-grid grid-overlay overflow-hidden">
-      <div className="absolute inset-0 -z-10">
-        <div className="absolute -top-40 -right-40 w-[35rem] h-[35rem] rounded-full bg-blue-500/20 blur-3xl" />
-        <div className="absolute -bottom-40 -left-40 w-[35rem] h-[35rem] rounded-full bg-pink-500/20 blur-3xl" />
-      </div>
-      <div className="container-xl py-20 md:py-28">
-        <div className="max-w-3xl">
-          <span className="inline-flex items-center gap-2 text-xs font-semibold px-3 py-1 rounded-full bg-white/10 border border-white/10 text-white/70">
-            <Rocket className="w-3.5 h-3.5" />
-            New: Sprite Sheet Generator v1.4
-          </span>
-          <h1 className="mt-5 text-4xl md:text-6xl font-extrabold leading-tight">
-            Draw mobile game art at lightspeed, right inside Photoshop.
-          </h1>
-          <p className="mt-5 text-white/70 text-lg md:text-xl">
-            PixelCrafter AI turns short prompts into production-ready sprites, tiles, and UI elements.
-            Keep your layers, color profiles, and dimensions intact—ship 10x faster without leaving your canvas.
-          </p>
+  const { t } = useTranslation()
 
-          <div className="mt-8 flex flex-col sm:flex-row gap-3">
-            <a href="#download" className="button-primary">
-              Get the Plugin for Photoshop
-              <ArrowRight className="w-4 h-4" />
-            </a>
-            <a href="#demo" className="button-secondary">
-              <PlayCircle className="w-4 h-4" />
-              Watch 90s demo
-            </a>
+  return (
+    <section className="relative overflow-hidden py-20 md:py-32">
+      <div className="absolute inset-0 bg-gradient-to-b from-blue-500/10 via-transparent to-transparent" />
+      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-blue-500/20 via-transparent to-transparent" />
+      
+      <div className="container-xl relative">
+        <div className="max-w-4xl mx-auto text-center">
+          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/5 border border-white/10 backdrop-blur mb-6">
+            <Sparkles className="w-4 h-4 text-blue-400" />
+            <span className="text-sm text-white/80">{t('hero.badge')}</span>
           </div>
 
-          <div className="mt-10 grid grid-cols-2 md:grid-cols-4 gap-4">
-            {[
-              ['100k+', 'assets generated'],
-              ['8x', 'faster iteration'],
-              ['99%', 'layer fidelity'],
-              ['24/7', 'local inference'],
-            ].map(([big, small]) => (
-              <div key={big} className="card p-4">
-                <div className="text-2xl font-extrabold">{big}</div>
-                <div className="text-white/60 text-xs">{small}</div>
-              </div>
-            ))}
+          <h1 className="text-4xl md:text-6xl lg:text-7xl font-extrabold mb-6 bg-gradient-to-r from-white via-white to-white/60 bg-clip-text text-transparent">
+            {t('hero.title')}
+          </h1>
+
+          <p className="text-lg md:text-xl text-white/70 mb-10 max-w-2xl mx-auto">
+            {t('hero.subtitle')}
+          </p>
+
+          <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
+            <a href="#apply" className="button-primary">
+              <Sparkles className="w-5 h-5" />
+              {t('hero.cta')}
+            </a>
+            <button className="button-secondary">
+              <Play className="w-5 h-5" />
+              {t('hero.watchDemo')}
+            </button>
           </div>
         </div>
       </div>

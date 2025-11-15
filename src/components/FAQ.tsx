@@ -1,41 +1,45 @@
-import React from 'react'
-
-const faqs = [
-  {
-    q: 'Does it run locally or in the cloud?',
-    a: 'By default, generation runs locally with optimized models. You can switch to cloud for heavier styles.',
-  },
-  {
-    q: 'Which Photoshop versions are supported?',
-    a: 'Works with Photoshop CC 2022 and newer on macOS and Windows.',
-  },
-  {
-    q: 'Do you keep my art private?',
-    a: 'Yes. Your assets stay on your machine unless you opt-in to cloud features. No training on your data.',
-  },
-  {
-    q: 'Can I export sprite sheets?',
-    a: 'Yes. Export PNG sequences or a compact sprite sheet with spacing and naming templates.',
-  },
-  {
-    q: 'Is there a free trial?',
-    a: 'You can use the Free plan forever. Pro unlocks unlimited generations and commercial use.',
-  },
-]
+import React, { useState } from 'react'
+import { useTranslation } from 'react-i18next'
+import { ChevronDown } from 'lucide-react'
 
 export default function FAQ() {
+  const { t } = useTranslation()
+  const [openIndex, setOpenIndex] = useState<number | null>(0)
+
+  const faqs = [
+    { questionKey: 'faq.q1.question', answerKey: 'faq.q1.answer' },
+    { questionKey: 'faq.q2.question', answerKey: 'faq.q2.answer' },
+    { questionKey: 'faq.q3.question', answerKey: 'faq.q3.answer' },
+    { questionKey: 'faq.q4.question', answerKey: 'faq.q4.answer' },
+    { questionKey: 'faq.q5.question', answerKey: 'faq.q5.answer' },
+    { questionKey: 'faq.q6.question', answerKey: 'faq.q6.answer' },
+  ]
+
   return (
     <section id="faq" className="container-xl py-16 md:py-24">
-      <div className="max-w-2xl mb-8">
-        <h2 className="text-3xl md:text-4xl font-extrabold">FAQs</h2>
-        <p className="text-white/70 mt-3">Everything you need to know about PixelCrafter AI.</p>
+      <div className="text-center mb-16">
+        <h2 className="text-3xl md:text-4xl font-extrabold">{t('faq.title')}</h2>
       </div>
 
-      <div className="grid md:grid-cols-2 gap-4">
-        {faqs.map((f) => (
-          <div key={f.q} className="card p-5">
-            <h3 className="font-semibold">{f.q}</h3>
-            <p className="text-white/70 mt-2 text-sm">{f.a}</p>
+      <div className="max-w-3xl mx-auto space-y-4">
+        {faqs.map((faq, index) => (
+          <div key={index} className="card shine overflow-hidden">
+            <button
+              onClick={() => setOpenIndex(openIndex === index ? null : index)}
+              className="w-full p-6 flex items-center justify-between text-left hover:bg-white/5 transition-colors"
+            >
+              <span className="font-semibold text-lg pr-8">{t(faq.questionKey)}</span>
+              <ChevronDown
+                className={`w-5 h-5 text-white/60 flex-shrink-0 transition-transform ${
+                  openIndex === index ? 'rotate-180' : ''
+                }`}
+              />
+            </button>
+            {openIndex === index && (
+              <div className="px-6 pb-6 text-white/70">
+                {t(faq.answerKey)}
+              </div>
+            )}
           </div>
         ))}
       </div>

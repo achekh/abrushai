@@ -6,9 +6,9 @@ import Features from './components/Features'
 import Workflow from './components/Workflow'
 import Gallery from './components/Gallery'
 import Testimonials from './components/Testimonials'
-import Pricing from './components/Pricing'
 import FAQ from './components/FAQ'
-import CTA from './components/CTA'
+import RegistrationForm from './components/RegistrationForm'
+import Footer from './components/Footer'
 
 function App() {
   return (
@@ -21,10 +21,10 @@ function App() {
         <Workflow />
         <Gallery />
         <Testimonials />
-        <Pricing />
         <FAQ />
-        <CTA />
+        <RegistrationForm />
       </main>
+      <Footer />
     </div>
   )
 }

@@ -1,30 +1,34 @@
 import React from 'react'
-
-const logos = [
-  'HyperFrog',
-  'NebulaSoft',
-  'PixelPunk',
-  'Playmint',
-  'Tiny Titan',
-  'ArcForge',
-  'BlueMonk',
-  'Moonbyte',
-]
+import { useTranslation } from 'react-i18next'
 
 export default function LogoWall() {
+  const { t } = useTranslation()
+
+  const logos = [
+    { name: 'Adobe', width: 120 },
+    { name: 'Pixar', width: 100 },
+    { name: 'Disney', width: 110 },
+    { name: 'Netflix', width: 130 },
+    { name: 'Spotify', width: 120 },
+  ]
+
   return (
-    <section className="container-xl py-10 md:py-14">
-      <p className="text-center text-white/60 text-sm mb-6">Trusted by game studios and solo devs</p>
-      <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-3">
-        {logos.map((name) => (
-          <div
-            key={name}
-            className="card p-4 shine text-center text-white/70 text-sm font-semibold"
-            aria-label={`Logo ${name}`}
-          >
-            {name}
-          </div>
-        ))}
+    <section className="py-16 border-y border-white/10">
+      <div className="container-xl">
+        <p className="text-center text-white/50 text-sm mb-8 uppercase tracking-wider">
+          {t('logoWall.title')}
+        </p>
+        <div className="flex flex-wrap items-center justify-center gap-12 opacity-40">
+          {logos.map((logo) => (
+            <div
+              key={logo.name}
+              className="text-white/60 font-bold text-2xl"
+              style={{ width: logo.width }}
+            >
+              {logo.name}
+            </div>
+          ))}
+        </div>
       </div>
     </section>
   )
