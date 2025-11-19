@@ -1,31 +1,24 @@
-import React from 'react'
-import Navbar from './components/Navbar'
+import React, { useState } from 'react'
+import { LanguageProvider } from './contexts/LanguageContext'
 import Hero from './components/Hero'
-import LogoWall from './components/LogoWall'
 import Features from './components/Features'
-import Workflow from './components/Workflow'
-import Gallery from './components/Gallery'
-import Testimonials from './components/Testimonials'
-import FAQ from './components/FAQ'
-import RegistrationForm from './components/RegistrationForm'
+import BetaForm from './components/BetaForm'
 import Footer from './components/Footer'
+import LanguageToggle from './components/LanguageToggle'
 
 function App() {
+  const [isSubmitted, setIsSubmitted] = useState(false)
+
   return (
-    <div>
-      <Navbar />
-      <main>
+    <LanguageProvider>
+      <div className="min-h-screen bg-[#E0E5EC]">
+        <LanguageToggle />
         <Hero />
-        <LogoWall />
         <Features />
-        <Workflow />
-        <Gallery />
-        <Testimonials />
-        <FAQ />
-        <RegistrationForm />
-      </main>
-      <Footer />
-    </div>
+        <BetaForm isSubmitted={isSubmitted} setIsSubmitted={setIsSubmitted} />
+        <Footer />
+      </div>
+    </LanguageProvider>
   )
 }
 

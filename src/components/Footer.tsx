@@ -1,76 +1,70 @@
 import React from 'react'
-import { useTranslation } from 'react-i18next'
-import { Brush, Github, Twitter, Linkedin } from 'lucide-react'
+import { Mail, Twitter, Github, Linkedin } from 'lucide-react'
+import { useLanguage } from '../contexts/LanguageContext'
 
-export default function Footer() {
-  const { t } = useTranslation()
+const Footer = () => {
+  const { t } = useLanguage()
+
+  const links = [
+    { key: 'footer.link.about', href: '#' },
+    { key: 'footer.link.docs', href: '#' },
+    { key: 'footer.link.support', href: '#' },
+    { key: 'footer.link.privacy', href: '#' }
+  ]
 
   return (
-    <footer className="border-t border-white/10 py-12">
-      <div className="container-xl">
-        <div className="grid md:grid-cols-2 lg:grid-cols-5 gap-8 mb-8">
-          <div className="lg:col-span-2">
-            <div className="flex items-center gap-2 mb-4">
-              <div className="relative">
-                <div className="absolute inset-0 rounded-xl blur-lg opacity-60 bg-gradient-to-tr from-blue-500 to-pink-500" />
-                <div className="relative flex items-center justify-center w-9 h-9 rounded-xl bg-black border border-white/10">
-                  <Brush className="w-5 h-5 text-blue-400" />
-                </div>
-              </div>
-              <span className="font-extrabold tracking-tight text-white text-lg">ABrush</span>
-            </div>
-            <p className="text-white/60 mb-4">
-              {t('footer.tagline')}
+    <footer className="py-12 px-6 bg-[#E0E5EC]">
+      <div className="max-w-7xl mx-auto">
+        <div className="grid md:grid-cols-3 gap-8 mb-8">
+          <div>
+            <h3 className="text-xl font-bold text-gray-800 mb-4">AI Photoshop Plugin</h3>
+            <p className="text-gray-600 leading-relaxed">
+              {t('footer.description')}
             </p>
-            <div className="flex gap-4">
-              <a href="#" className="w-10 h-10 rounded-lg bg-white/5 border border-white/10 flex items-center justify-center hover:bg-white/10 transition-colors">
-                <Twitter className="w-5 h-5 text-white/60" />
-              </a>
-              <a href="#" className="w-10 h-10 rounded-lg bg-white/5 border border-white/10 flex items-center justify-center hover:bg-white/10 transition-colors">
-                <Github className="w-5 h-5 text-white/60" />
-              </a>
-              <a href="#" className="w-10 h-10 rounded-lg bg-white/5 border border-white/10 flex items-center justify-center hover:bg-white/10 transition-colors">
-                <Linkedin className="w-5 h-5 text-white/60" />
-              </a>
+          </div>
+
+          <div>
+            <h4 className="text-lg font-semibold text-gray-800 mb-4">{t('footer.links')}</h4>
+            <ul className="space-y-2">
+              {links.map((link, index) => (
+                <li key={index}>
+                  <a href={link.href} className="text-gray-600 hover:text-purple-600 transition-colors">
+                    {t(link.key)}
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          <div>
+            <h4 className="text-lg font-semibold text-gray-800 mb-4">{t('footer.contact')}</h4>
+            <div className="flex gap-3">
+              {[
+                { icon: Mail, href: 'mailto:info@example.com' },
+                { icon: Twitter, href: '#' },
+                { icon: Github, href: '#' },
+                { icon: Linkedin, href: '#' }
+              ].map((social, index) => (
+                <a
+                  key={index}
+                  href={social.href}
+                  className="w-12 h-12 rounded-xl bg-[#E0E5EC] shadow-[6px_6px_12px_#b8bdc4,-6px_-6px_12px_#ffffff] hover:shadow-[inset_4px_4px_8px_#b8bdc4,inset_-4px_-4px_8px_#ffffff] transition-all duration-300 flex items-center justify-center"
+                >
+                  <social.icon className="w-5 h-5 text-gray-700" />
+                </a>
+              ))}
             </div>
-          </div>
-
-          <div>
-            <h3 className="font-semibold mb-4">{t('footer.product')}</h3>
-            <ul className="space-y-2 text-white/60">
-              <li><a href="#features" className="hover:text-white transition">{t('footer.features')}</a></li>
-              <li><a href="#workflow" className="hover:text-white transition">{t('footer.workflow')}</a></li>
-              <li><a href="#gallery" className="hover:text-white transition">{t('footer.gallery')}</a></li>
-            </ul>
-          </div>
-
-          <div>
-            <h3 className="font-semibold mb-4">{t('footer.company')}</h3>
-            <ul className="space-y-2 text-white/60">
-              <li><a href="#" className="hover:text-white transition">{t('footer.about')}</a></li>
-              <li><a href="#" className="hover:text-white transition">{t('footer.blog')}</a></li>
-              <li><a href="#" className="hover:text-white transition">{t('footer.careers')}</a></li>
-            </ul>
-          </div>
-
-          <div>
-            <h3 className="font-semibold mb-4">{t('footer.support')}</h3>
-            <ul className="space-y-2 text-white/60">
-              <li><a href="#" className="hover:text-white transition">{t('footer.documentation')}</a></li>
-              <li><a href="#" className="hover:text-white transition">{t('footer.contact')}</a></li>
-              <li><a href="#faq" className="hover:text-white transition">{t('footer.faq')}</a></li>
-            </ul>
           </div>
         </div>
 
-        <div className="pt-8 border-t border-white/10 flex flex-col md:flex-row justify-between items-center gap-4 text-sm text-white/60">
-          <p>© 2024 ABrush. {t('footer.rights')}</p>
-          <div className="flex gap-6">
-            <a href="#" className="hover:text-white transition">{t('footer.privacy')}</a>
-            <a href="#" className="hover:text-white transition">{t('footer.terms')}</a>
-          </div>
+        <div className="pt-8 border-t border-gray-300">
+          <p className="text-center text-gray-600">
+            {t('footer.copyright')}
+          </p>
         </div>
       </div>
     </footer>
   )
 }
+
+export default Footer
