@@ -1,53 +1,67 @@
-# AI Photoshop Plugin Landing Page
+# ABrush Landing Page
 
-A modern, bilingual landing page for an AI-powered Photoshop plugin with beta registration.
+Revolutionary AI plugin for Adobe Photoshop that transforms your creative process.
 
 ## Features
 
-- 🌐 Bilingual support (English/Ukrainian)
-- 🎨 Neumorphic design with TailwindCSS
-- 🤖 reCAPTCHA integration for bot protection
-- 📱 Fully responsive design
-- ⚡ Built with React, TypeScript, and Vite
+- 🎨 AI-powered image generation
+- ✏️ Text-to-image creation
+- 🖌️ Mask inpainting
+- 📝 Text-based editing
+- 🎭 3D model generation
+- 🌍 Bilingual support (English/Ukrainian)
+- 🤖 Bot protection with Google reCAPTCHA
 
-## Setup
+## Tech Stack
+
+- React 18
+- TypeScript
+- Vite
+- TailwindCSS
+- Lucide React Icons
+- Google reCAPTCHA v2
+
+## Getting Started
 
 1. Install dependencies:
 ```bash
 npm install
 ```
 
-2. Configure reCAPTCHA:
-   - Get your reCAPTCHA site key from [Google reCAPTCHA](https://www.google.com/recaptcha/admin)
-   - Update `.env` file with your site key:
-   ```
-   VITE_RECAPTCHA_SITE_KEY=your_actual_site_key_here
-   ```
+2. Create a `.env` file in the root directory:
+```env
+VITE_RECAPTCHA_SITE_KEY=your_recaptcha_site_key_here
+```
 
-3. Start development server:
+3. Start the development server:
 ```bash
 npm run dev
 ```
 
+4. Build for production:
+```bash
+npm run build
+```
+
 ## Environment Variables
 
-- `VITE_RECAPTCHA_SITE_KEY`: Your Google reCAPTCHA v2 site key
+- `VITE_RECAPTCHA_SITE_KEY` - Your Google reCAPTCHA v2 site key
 
-## Form Fields
+## Project Structure
 
-The beta registration form includes:
-- Name (required)
-- Email (required)
-- Occupation (required) - 11 artist specializations
-- Company Name (optional)
-- AI Tools (required) - 6 popular AI tools + Other option
-- Custom AI Tool (conditional, required if "Other" selected)
-- reCAPTCHA verification (required)
-
-## Development
-
-```bash
-npm run dev      # Start dev server
-npm run build    # Build for production
-npm run preview  # Preview production build
 ```
+src/
+├── components/
+│   ├── Hero.tsx
+│   ├── Features.tsx
+│   ├── BetaForm.tsx
+│   └── Footer.tsx
+├── contexts/
+│   └── LanguageContext.tsx
+├── App.tsx
+└── main.tsx
+```
+
+## License
+
+© 2024 ABrush. All rights reserved.
