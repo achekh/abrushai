@@ -32,11 +32,33 @@ const BetaForm = ({ isSubmitted, setIsSubmitted }: BetaFormProps) => {
 
     setIsLoading(true)
     
-    // Simulate API call
-    setTimeout(() => {
+    try {
+      const response = await fetch(
+        'https://abrushai-api-duc3byb4fqfbd3c3.westeurope-01.azurewebsites.net/api/submit-form',
+        {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({
+            ...formData,
+            recaptchaToken
+          })
+        }
+      )
+
+      if (response.ok) {
+        setIsLoading(false)
+        setIsSubmitted(true)
+      } else {
+        alert(t('beta.error') || 'Error submitting form')
+        setIsLoading(false)
+      }
+    } catch (error) {
+      console.error('Form submission error:', error)
+      alert(t('beta.error') || 'Error submitting form')
       setIsLoading(false)
-      setIsSubmitted(true)
-    }, 1500)
+    }
   }
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
