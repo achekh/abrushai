@@ -1,6 +1,6 @@
-import React, { useState, useRef } from 'react'
+import React, { useState } from 'react'
 import { CheckCircle2, Loader2 } from 'lucide-react'
-import ReCAPTCHA from 'react-google-recaptcha'
+import { useGoogleReCaptcha } from 'react-google-recaptcha-v3'
 import { useLanguage } from '../contexts/LanguageContext'
 
 interface BetaFormProps {
@@ -10,7 +10,7 @@ interface BetaFormProps {
 
 const BetaForm = ({ isSubmitted, setIsSubmitted }: BetaFormProps) => {
   const { t } = useLanguage()
-  const recaptchaRef = useRef<ReCAPTCHA>(null)
+  const { executeRecaptcha } = useGoogleReCaptcha()
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -20,19 +20,28 @@ const BetaForm = ({ isSubmitted, setIsSubmitted }: BetaFormProps) => {
     customAiTool: ''
   })
   const [isLoading, setIsLoading] = useState(false)
-  const [recaptchaToken, setRecaptchaToken] = useState<string | null>(null)
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
     
-    if (!recaptchaToken) {
-      alert(t('beta.recaptcha.required'))
-      return
-    }
-
     setIsLoading(true)
     
     try {
+      // Execute reCAPTCHA v3 via hook (ensure GoogleReCaptchaProvider wraps the app)
+      if (!executeRecaptcha) {
+        alert(t('beta.recaptcha.required'))
+        setIsLoading(false)
+        return
+      }
+
+      const token = await executeRecaptcha('beta_form_submit')
+
+      if (!token) {
+        alert(t('beta.recaptcha.required'))
+        setIsLoading(false)
+        return
+      }
+
       const response = await fetch(
         'https://abrushai-api-duc3byb4fqfbd3c3.westeurope-01.azurewebsites.net/api/submit-form',
         {
@@ -42,7 +51,7 @@ const BetaForm = ({ isSubmitted, setIsSubmitted }: BetaFormProps) => {
           },
           body: JSON.stringify({
             ...formData,
-            recaptchaToken
+            recaptchaToken: token
           })
         }
       )
@@ -74,9 +83,7 @@ const BetaForm = ({ isSubmitted, setIsSubmitted }: BetaFormProps) => {
     }
   }
 
-  const handleRecaptchaChange = (token: string | null) => {
-    setRecaptchaToken(token)
-  }
+
 
   if (isSubmitted) {
     return (
@@ -229,18 +236,11 @@ const BetaForm = ({ isSubmitted, setIsSubmitted }: BetaFormProps) => {
               </div>
             )}
 
-            <div className="flex justify-center pt-4">
-              <ReCAPTCHA
-                ref={recaptchaRef}
-                sitekey={import.meta.env.VITE_RECAPTCHA_SITE_KEY}
-                onChange={handleRecaptchaChange}
-                theme="light"
-              />
-            </div>
+            {/* reCAPTCHA v3 is executed via hook; ensure GoogleReCaptchaProvider wraps the app */}
 
             <button
               type="submit"
-              disabled={isLoading || !recaptchaToken}
+              disabled={isLoading}
               className="w-full px-8 py-5 rounded-2xl bg-[#E0E5EC] text-gray-800 font-bold text-lg shadow-[12px_12px_24px_#b8bdc4,-12px_-12px_24px_#ffffff] hover:shadow-[inset_8px_8px_16px_#b8bdc4,inset_-8px_-8px_16px_#ffffff] transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2"
             >
               {isLoading ? (

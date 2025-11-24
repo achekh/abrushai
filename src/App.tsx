@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import { GoogleReCaptchaProvider } from 'react-google-recaptcha-v3'
 import { LanguageProvider } from './contexts/LanguageContext'
 import Hero from './components/Hero'
 import Features from './components/Features'
@@ -10,15 +11,17 @@ function App() {
   const [isSubmitted, setIsSubmitted] = useState(false)
 
   return (
-    <LanguageProvider>
-      <div className="min-h-screen bg-[#E0E5EC]">
-        <LanguageToggle />
-        <Hero />
-        <Features />
-        <BetaForm isSubmitted={isSubmitted} setIsSubmitted={setIsSubmitted} />
-        <Footer />
-      </div>
-    </LanguageProvider>
+    <GoogleReCaptchaProvider reCaptchaKey={import.meta.env.VITE_RECAPTCHA_SITE_KEY}>
+      <LanguageProvider>
+        <div className="min-h-screen bg-[#E0E5EC]">
+          <LanguageToggle />
+          <Hero />
+          <Features />
+          <BetaForm isSubmitted={isSubmitted} setIsSubmitted={setIsSubmitted} />
+          <Footer />
+        </div>
+      </LanguageProvider>
+    </GoogleReCaptchaProvider>
   )
 }
 
