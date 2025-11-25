@@ -70,10 +70,17 @@ const Features: React.FC = () => {
             >
               <div className="relative w-full h-48 mb-6 overflow-hidden rounded-lg bg-gray-100">
                 <img
-                  src={hoveredFeature === index ? feature.image2 : feature.image1}
+                  src={feature.image1}
                   alt={feature.title}
-                  className={`w-full h-full object-cover ${hoveredFeature === index ? 'curtain-image' : ''}`}
+                  className="w-full h-full object-cover"
                 />
+                {hoveredFeature === index && (
+                  <img
+                    src={feature.image2}
+                    alt={feature.title}
+                    className="absolute inset-0 w-full h-full object-cover curtain-image"
+                  />
+                )}
               </div>
               <h3 className="text-2xl font-bold text-gray-900 mb-3">
                 {feature.title}
