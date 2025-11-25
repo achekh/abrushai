@@ -88,6 +88,14 @@ const Features: React.FC = () => {
                   <div className="w-1.5 h-1.5 bg-white rounded-full"></div>
                   <span>{t('features.professional.item4')}</span>
                 </li>
+                <li className="flex items-center gap-2">
+                  <div className="w-1.5 h-1.5 bg-white rounded-full"></div>
+                  <span>{t('features.professional.item5')}</span>
+                </li>
+                <li className="flex items-center gap-2">
+                  <div className="w-1.5 h-1.5 bg-white rounded-full"></div>
+                  <span>{t('features.professional.item6')}</span>
+                </li>
               </ul>
             </div>
           </div>
