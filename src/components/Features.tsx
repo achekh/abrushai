@@ -1,28 +1,33 @@
-import React from 'react'
-import { Sparkles, Type, Paintbrush, Edit3, Users } from 'lucide-react'
+import React, { useState } from 'react'
+import { Users } from 'lucide-react'
 import { useLanguage } from '../contexts/LanguageContext'
 
 const Features: React.FC = () => {
   const { t } = useLanguage()
+  const [hoveredFeature, setHoveredFeature] = useState<number | null>(null)
 
   const features = [
     {
-      icon: Sparkles,
+      image1: '/1_control.png',
+      image2: '/2_control.png',
       title: t('features.controlGen.title'),
       description: t('features.controlGen.desc')
     },
     {
-      icon: Type,
+      image1: '/1_txt2img.png',
+      image2: '/2_txt2img.png',
       title: t('features.textGen.title'),
       description: t('features.textGen.desc')
     },
     {
-      icon: Paintbrush,
+      image1: '/1_inpainting.png',
+      image2: '/2_inpainting.png',
       title: t('features.inpainting.title'),
       description: t('features.inpainting.desc')
     },
     {
-      icon: Edit3,
+      image1: '/1_edit.png',
+      image2: '/2_edit.png',
       title: t('features.textEdit.title'),
       description: t('features.textEdit.desc')
     }
@@ -30,6 +35,21 @@ const Features: React.FC = () => {
 
   return (
     <section id="features" className="py-20 bg-gray-50">
+      <style>{`
+        @keyframes curtainReveal {
+          from {
+            clip-path: inset(0 100% 0 0);
+          }
+          to {
+            clip-path: inset(0 0 0 0);
+          }
+        }
+        
+        .curtain-image {
+          animation: curtainReveal 0.6s ease-in-out forwards;
+        }
+      `}</style>
+      
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-16">
           <h2 className="text-4xl font-bold text-gray-900 mb-4">
@@ -45,9 +65,15 @@ const Features: React.FC = () => {
             <div
               key={index}
               className="bg-white p-8 rounded-2xl shadow-lg hover:shadow-xl transition-shadow"
+              onMouseEnter={() => setHoveredFeature(index)}
+              onMouseLeave={() => setHoveredFeature(null)}
             >
-              <div className="w-12 h-12 bg-purple-100 rounded-lg flex items-center justify-center mb-4">
-                <feature.icon className="w-6 h-6 text-purple-600" />
+              <div className="relative w-full h-48 mb-6 overflow-hidden rounded-lg bg-gray-100">
+                <img
+                  src={hoveredFeature === index ? feature.image2 : feature.image1}
+                  alt={feature.title}
+                  className={`w-full h-full object-cover ${hoveredFeature === index ? 'curtain-image' : ''}`}
+                />
               </div>
               <h3 className="text-2xl font-bold text-gray-900 mb-3">
                 {feature.title}
