@@ -17,11 +17,6 @@ const Hero = () => {
       </div>
 
       <div className="max-w-6xl mx-auto text-center relative z-10">
-        <div className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-[#E0E5EC] mb-8 shadow-[8px_8px_16px_#b8bdc4,-8px_-8px_16px_#ffffff]">
-          <Sparkles className="w-5 h-5 text-purple-600" />
-          <span className="text-sm font-medium text-gray-700">{t('hero.badge')}</span>
-        </div>
-
         <h1 className="text-5xl md:text-7xl font-bold text-gray-800 mb-6 leading-tight">
           {t('hero.title.line1')}<br />
           <span className="bg-gradient-to-r from-purple-600 to-pink-600 bg-clip-text text-transparent">
@@ -40,10 +35,6 @@ const Hero = () => {
           >
             {t('hero.cta.primary')}
             <ArrowDown className="w-5 h-5 group-hover:translate-y-1 transition-transform" />
-          </button>
-          
-          <button className="px-8 py-4 rounded-2xl bg-[#E0E5EC] text-gray-700 font-medium text-lg shadow-[inset_4px_4px_8px_#b8bdc4,inset_-4px_-4px_8px_#ffffff] hover:shadow-[8px_8px_16px_#b8bdc4,-8px_-8px_16px_#ffffff] transition-all duration-300">
-            {t('hero.cta.secondary')}
           </button>
         </div>
 
